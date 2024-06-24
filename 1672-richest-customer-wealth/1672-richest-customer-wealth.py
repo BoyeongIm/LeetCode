@@ -6,4 +6,9 @@ class Solution(object):
             if (result > max):
                 max = result
         return max
-        
+
+////////////////////////////////
+// another efficient solution //
+class Solution(object):
+    def maximumWealth(self, accounts):
+        return max(sum(acc) for acc in accounts)
