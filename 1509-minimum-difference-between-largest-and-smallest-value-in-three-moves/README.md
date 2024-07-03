@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/?envType=daily-question&envId=2024-07-03">1509. Minimum Difference Between Largest and Smallest Value in Three Moves</a></h2><h3>Medium</h3><hr><p>You are given an integer array <code>nums</code>.</p>
+<h2><a href="https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/?envType=daily-question&envId=2024-07-03">1509. Minimum Difference Between Largest and Smallest Value in Three Moves : 240703 </a></h2><h3>Medium</h3><hr><p>You are given an integer array <code>nums</code>.</p>
 
 <p>In one move, you can choose one element of <code>nums</code> and change it to <strong>any value</strong>.</p>
 
