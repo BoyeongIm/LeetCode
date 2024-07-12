@@ -8,10 +8,9 @@ class Solution(object):
         start, end = 0, len(numbers)-1        
 
         while start < end:
-            total = numbers[start] + numbers[end]
-            if total == target:
+            if numbers[start] + numbers[end] == target:
                 return [start+1, end+1]
-            elif total > target:
+            elif numbers[start] + numbers[end] > target:
                 end -= 1
-            elif total < target:
+            elif numbers[start] + numbers[end] < target:
                 start += 1
