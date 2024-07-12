@@ -5,17 +5,13 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        start, end = 0, len(numbers)-1
-        mid = len(numbers) // 2
-        
-        while numbers[start]+numbers[end] != target:
-            if (target-numbers[start]) in numbers:
-                if numbers[mid] > target-numbers[start]:
-                    end = mid-1
-                    mid = (start+end) // 2
-            elif (target-numbers[end]) in numbers:
-                if numbers[mid] < target-numbers[end]:
-                    start = mid+1
-                    mid = (start+end) // 2
-    
-        return [start+1, end+1]
+        start, end = 0, len(numbers)-1        
+
+        while start < end:
+            total = numbers[start] + numbers[end]
+            if total == target:
+                return [start+1, end+1]
+            elif total > target:
+                end -= 1
+            elif total < target:
+                start += 1
