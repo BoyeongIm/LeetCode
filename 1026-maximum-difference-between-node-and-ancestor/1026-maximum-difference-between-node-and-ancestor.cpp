@@ -14,11 +14,11 @@ public:
     int maxAncestorDiff(TreeNode* root, int maxV=INT_MIN, int minV=INT_MAX) {
         if (!root) return maxV-minV;
 
-        int maxValue = max(maxV, root->val);
-        int minValue = min(minV, root->val);
+        maxV = max(maxV, root->val);
+        minV = min(minV, root->val);
 
-        int ans1 = maxAncestorDiff(root->left, maxValue, minValue);
-        int ans2 = maxAncestorDiff(root->right, maxValue, minValue);
+        int ans1 = maxAncestorDiff(root->left, maxV, minV);
+        int ans2 = maxAncestorDiff(root->right, maxV, minV);
 
         return max(ans1, ans2);
     }
