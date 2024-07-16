@@ -15,7 +15,7 @@ class Solution(object):
         if not node:
             return node
 
-        ans, visited = {}, []
+        ans, visited = {}, set()
         self.dfs(node, ans, visited)
         return ans[node]
 
@@ -23,7 +23,7 @@ class Solution(object):
         if node in visited:
             return
 
-        visited.append(node)
+        visited.add(node)
         if node not in ans:
             ans[node] = Node(node.val)
 
