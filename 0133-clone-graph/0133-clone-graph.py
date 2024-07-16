@@ -14,17 +14,23 @@ class Solution(object):
         """
         if not node:
             return node
-        ans, visited, q = {}, [], deque([])
-        q.append(node)
-        while q:
-            v = q.popleft()
-            if v not in visited:
-                visited.append(v)
-                if v not in ans:
-                    ans[v] = Node(v.val)
-                for w in v.neighbors:
-                    q.append(w)
-                    if w not in ans:
-                        ans[w] = Node(w.val)
-                    ans[v].neighbors.append(ans[w])
-        return ans[node]        
+
+        ans, visited = {}, []
+        self.dfs(node, ans, visited)
+        return ans[node]
+
+    def dfs(self, node, ans, visited):
+        if node in visited:
+            return
+
+        visited.append(node)
+        if node not in ans:
+            ans[node] = Node(node.val)
+
+        for n in node.neighbors:
+            if n not in ans:
+                ans[n] = Node(n.val)
+            ans[node].neighbors.append(ans[n])
+            self.dfs(n, ans, visited)
+        
+        return ans
