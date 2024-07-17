@@ -15,11 +15,10 @@ public:
         for (int i=0; i<l-1; i++) {
             if (s[i]==s[i+1]) {
                 dp[2][i] = true;
+                max_len = 2;
             }
         }
-
-        max_len = 2;
-
+        
         for (int i=3; i<=l; i++) { // 총 길이
             for (int j=0; j<l-i+1; j++) { // 시작점
                 if (dp[i-2][j+1]) { // 지금 현재 길이에서 양 끝 두개를 뺀 것이 pandrolime인지 확인
