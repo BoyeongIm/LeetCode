@@ -6,7 +6,7 @@ public:
 
         string integer = to_string(x);
         int l = integer.length();
-        for (int i=0; i<l/2; i++) {
+        for (size_t i=0; i<l/2; i++) {
             if (integer[i] != integer[(l-1)-i]) return false;
         }
 
