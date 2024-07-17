@@ -5,7 +5,7 @@ public:
 
         string new_str;
         for (int i=0; i<s.length(); i++) {
-            if (isalpha(s[i]) || isdigit(s[i])) {
+            if ((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]>='0'&&s[i]<='9')) {
                 new_str += tolower(s[i]);
             }
         }
