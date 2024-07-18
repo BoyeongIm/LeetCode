@@ -3,10 +3,8 @@ public:
     vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
         int org_r = mat.size();
         int org_c = mat[0].size();
-        if (r * c != org_r*org_c)
-            return mat;
-        if (r == org_r && c == org_c)
-            return mat;
+        if (r * c != org_r*org_c) return mat;
+        if (r == org_r && c == org_c) return mat;
 
         vector<vector<int>> new_mat(r, vector<int>(c,0));
 
@@ -18,7 +16,7 @@ public:
                 new_mat[row][col] = mat[i][j];
                 col ++;
 
-                if (col==j) {
+                if (col==c) { // 한 행에서, 새로 주어진 c까지 도달하고 나면 다음 행으로 넘어함
                     row++;
                     col=0; // 다음 row로 넘어가면서 col이 초기화되어야 함.
                 }
