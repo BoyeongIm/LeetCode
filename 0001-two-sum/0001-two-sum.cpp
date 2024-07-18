@@ -9,14 +9,12 @@ public:
             int end=nums.size()-1;
             while (i<end) {
                 if (nums[i]+nums[end]==target) {
-                    idx[0]=i;
-                    idx[1]=end;
-                    break;
+                    return {i, end};
                 }
                 end--;
             }
         }
 
-        return idx;
+        return {};
     }
 };
