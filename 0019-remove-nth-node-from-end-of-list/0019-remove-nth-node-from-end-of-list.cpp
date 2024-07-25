@@ -26,12 +26,15 @@ public:
             delete curr;
             return head;
         } 
+        
         int size = 1;
         while (curr->next) {
             prev = curr;
             curr = curr->next;
             size++;
         } 
+        
+        if (size == n) return head->next;
 
         ListNode* curr2 = head;
         ListNode* prev2 = nullptr;
