@@ -11,7 +11,8 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        if (!head) return nullptr;
+        if (!head)
+            return nullptr;
         ListNode* curr = head;
         vector<ListNode*> copied;
 
@@ -21,13 +22,19 @@ public:
             curr = curr->next;
         }
 
-        //ListNode* tmp = copied.back();
-        //ListNode* curr = tmp;
-        //copied.pop_back();
+        ListNode* newhead = copied.back();
+        copied.pop_back();
+        ListNode* tmp = newhead;
 
-        for (int i=copied.size()-1; i>0; i--) {
-            copied[i]->next = copied[i-1];
-        }      
-        return copied.back();
+        while (!copied.empty()) {
+            ListNode* tmp_next = copied.back();
+            copied.pop_back();
+            tmp->next = tmp_next;
+            tmp = tmp_next;
+        }
+
+        tmp->next = nullptr;
+
+        return newhead;
     }
 };
