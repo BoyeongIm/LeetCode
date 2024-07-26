@@ -8,7 +8,7 @@ public:
         }
         priority_queue<tuple<int, int, int>, vector<tuple<int,int,int>>, greater<tuple<int,int, int>>> prQ;
         prQ.push({0, src, 0}); // cost, node, stops
-        vector<vector<int>> dist(n, vector<int>(k+2, 10001)); // distance & stop
+        vector<vector<int>> dist(n, vector<int>(k+2, INT_MAX)); // distance & stop
         dist[src][0] = 0;
         
         while (!prQ.empty()) {
