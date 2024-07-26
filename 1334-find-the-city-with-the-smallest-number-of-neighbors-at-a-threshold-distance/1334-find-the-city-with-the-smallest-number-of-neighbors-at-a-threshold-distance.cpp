@@ -32,7 +32,7 @@ public:
         }
         for (int i=0; i<n; i++) {
             for (int j=0; j<n; j++) {
-                if (i!=j && distance[i][j] <= distanceThreshold) {
+                if (distance[i][j] <= distanceThreshold) {
                     if (threshold_freq.find(i)!=threshold_freq.end())
                         threshold_freq[i]++;
                     else threshold_freq[i]=1;
