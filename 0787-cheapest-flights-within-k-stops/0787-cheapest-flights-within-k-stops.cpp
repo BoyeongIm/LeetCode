@@ -14,7 +14,7 @@ public:
         while (!prQ.empty()) {
             auto [cost, node, stops] = prQ.top();
             prQ.pop();
-
+            if (node == dst) return cost;
             if (stops > k) continue;
             
             for (const auto& e : flights) {
@@ -28,12 +28,6 @@ public:
                 }
             }
         }
-        int result = INT_MAX;
-        for (int i=0; i<=k+1; i++) {
-            result = min(result, dist[dst][i]);
-        }
-        
-        if (result < INT_MAX) return result;
-        else return -1;
+        return -1;
     }
 };
