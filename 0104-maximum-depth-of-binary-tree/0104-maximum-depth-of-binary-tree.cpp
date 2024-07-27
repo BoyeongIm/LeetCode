@@ -13,14 +13,15 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) {
         if (!root) return 0;
-        //if (!root->left && !root->right) return 1;
+        if (!root->left && !root->right) return 1;
         
         int depth = 0;
         queue<TreeNode*> nodeQ;
         nodeQ.push(root);
         while (!nodeQ.empty()) {
             depth++;
-            for (int i=0; i<nodeQ.size(); i++) {
+            int n = nodeQ.size();
+            for (int i=0; i<n; i++) {
                 TreeNode* curr = nodeQ.front();
                 nodeQ.pop();
                 if (curr->left) nodeQ.push(curr->left);
