@@ -15,9 +15,7 @@ class Solution(object):
                 start = mid+1
             else:
                 end = mid-1
-        if nums[start]==target:
+        if nums[start]>=target:
             return start
-        elif nums[start]<target:
+        else nums[start]<target:
             return start+1
-        else:
-            return start
