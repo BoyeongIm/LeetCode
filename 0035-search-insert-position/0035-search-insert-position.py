@@ -4,7 +4,9 @@ class Solution(object):
             return len(nums)
         elif target < nums[0]:
             return 0
-
+        elif target == nums[0]:
+            return 0
+            
         start, end = 0, len(nums)-1 
 
         while start<end:
