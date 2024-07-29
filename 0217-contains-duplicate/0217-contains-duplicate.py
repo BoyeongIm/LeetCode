@@ -1,9 +1,11 @@
 class Solution(object):
     def containsDuplicate(self, nums):
-        nset = set()
-        for n in nums:
-            if n in nset:
-                return True
-            nset.add(n)
-        
-        return False
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        nset = set(nums)
+        if len(nums) == len(nset):
+            return False
+        else:
+            return True
