@@ -20,4 +20,4 @@ class Solution(object):
         elif nums[start]<target:
             return start+1
         else:
-            return end-1
+            return start
