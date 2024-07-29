@@ -14,20 +14,17 @@ public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
         int mid = nums.size()/2;
         TreeNode* root = new TreeNode(nums[mid]);
-        TreeNode* temp1 = root;
-        TreeNode* temp2 = root;
-        
-        for (int i=mid-1; i>=0; i--) {
-            TreeNode* node = new TreeNode(nums[i]);
-            temp1->left = node;
-            temp1 = node;
+        vector<int> left;
+        for (int i=0; i<mid; i++) {
+            left.push_back(nums[i]);
         }
 
-        for (int j=mid+1; j<nums.size(); j++) {
-            TreeNode* node = new TreeNode(nums[j]);
-            temp2->right = node;
-            temp2 = node;
+        vector<int> right;
+        for (int j=mid+1; j<nums.size();j++) {
+            right.push_back(nums[j]);
         }
+        if (left.size()>0) root->left = sortedArrayToBST(left);
+        if (right.size()>0) root->right = sortedArrayToBST(right);
 
         return root;
     }
