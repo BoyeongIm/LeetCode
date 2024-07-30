@@ -1,8 +1,10 @@
 class Solution(object):
     def isIsomorphic(self, s, t):
-        if len(s)==1 and len(t)==1:
+        if len(s)==1:
             return True
+
         isomdict={}
+        
         for i in range(len(s)):
             if s[i] not in isomdict.keys():
                 if t[i] not in isomdict.values():
