@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* removeNodes(ListNode* head) {
-        if (!head) return nullptr;
+        if (!head->next) return head;
 
         ListNode* curr = head;
         vector<ListNode*> nodestack;
