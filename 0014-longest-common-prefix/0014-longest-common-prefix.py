@@ -1,12 +1,12 @@
 class Solution(object):
     def longestCommonPrefix(self, strs):
-        #lensorted = sorted(strs, key=len)
-        #standard = lensorted[0]
+        lensorted = sorted(strs, key=len)
+        standard = lensorted[0]
         count = 0
-        while count<len(strs[0]):
-            for str in strs[1:]:
-                if str[0][:count+1] != str[:count+1]:
-                    return strs[0][:count] 
+        while count<len(standard):
+            for str in lensorted[1:]:
+                if standard[:count+1] != str[:count+1]:
+                    return standard[:count] 
             count+=1
-        return strs[0]
+        return standard
                     
