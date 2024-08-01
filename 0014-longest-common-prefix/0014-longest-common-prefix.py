@@ -1,6 +1,5 @@
 class Solution(object):
     def longestCommonPrefix(self, strs):
-        print(min(strs))
         lensorted = sorted(strs, key=len)
         standard = lensorted[0]
         count = 0
