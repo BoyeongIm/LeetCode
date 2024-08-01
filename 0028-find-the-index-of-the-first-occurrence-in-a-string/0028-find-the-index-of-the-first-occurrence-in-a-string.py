@@ -10,6 +10,6 @@ class Solution(object):
         else:
             hl = len(haystack)
             nl = len(needle)
-            for i in range(hl-nl+2):
+            for i in range(hl-nl+1):
                 if haystack[i:i+nl] == needle:
                     return i
