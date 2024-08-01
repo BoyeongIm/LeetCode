@@ -4,12 +4,8 @@ class Solution(object):
         :type details: List[str]
         :rtype: int
         """
-        agelist = []
-        for d in details:
-            age = int(d[11:13])
-            agelist.append(age)
         count = 0
-        for a in agelist:
-            if a > 60:
+        for d in details:
+            if int(d[11:13]) > 60:
                 count+=1
         return count
