@@ -5,8 +5,8 @@ class Solution(object):
         count = 0
         while count<len(strs[0]):
             for str in strs[1:]:
-                if strs[0][:count+1] != str[:count+1]:
-                    return str[:count] 
+                if str[0][:count+1] != str[:count+1]:
+                    return strs[0][:count] 
             count+=1
         return strs[0]
                     
