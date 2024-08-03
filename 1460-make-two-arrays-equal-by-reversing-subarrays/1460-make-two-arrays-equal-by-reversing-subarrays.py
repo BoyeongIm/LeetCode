@@ -7,19 +7,17 @@ class Solution(object):
         """
         target_dict=dict()
         for t in target:
-            if t not in arr:
-                return False
-            if t not in target_dict:
-                target_dict[t]=1
-            else:
+            if t in target_dict:
                 target_dict[t]+=1
+            else:
+                target_dict[t]=1
 
         arr_dict = dict()
         for n in arr:
-            if n not in arr_dict:
-                arr_dict[n]=1
-            else:
+            if n in arr_dict:
                 arr_dict[n]+=1
+            else:
+                arr_dict[n]=1
         
         return target_dict==arr_dict
 
