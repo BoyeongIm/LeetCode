@@ -13,7 +13,7 @@ public:
             int v = to_stack.top();
             to_stack.pop();
 
-            if (head.val == v) {
+            if (head->val == v) {
                 head = head->next;
             } else return false;
         }
