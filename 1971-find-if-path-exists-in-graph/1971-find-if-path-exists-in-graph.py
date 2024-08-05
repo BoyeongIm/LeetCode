@@ -1,5 +1,7 @@
 class Solution(object):
     def validPath(self, n, edges, source, destination):
+        if not edges:
+            return True
         adj = {i:[] for i in range(n)}
         for u, v in edges:
             adj[u].append(v)
