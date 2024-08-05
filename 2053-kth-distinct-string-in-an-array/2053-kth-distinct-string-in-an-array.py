@@ -11,7 +11,7 @@ class Solution(object):
         for a in arr:
             if arr_dict[a]==1:
                 count+=1
-                if count==k:
-                    return a
+            if count==k:
+                return a
 
         return ""
