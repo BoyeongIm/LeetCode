@@ -3,7 +3,7 @@ class Solution(object):
         if m==0:
             nums1[:n] = nums2[:n]
         elif n==0:
-            nums1 = nums1[:m]
+            return
         else:
             nums1[m:m+n] = nums2[:n]
             for i in range(len(nums1)-1):
