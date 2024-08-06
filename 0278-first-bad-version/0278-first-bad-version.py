@@ -10,7 +10,9 @@ class Solution(object):
         start, end = 1, n
         while start<=end:
             mid = (start+end)//2
-            if isBadVersion(mid):
+            if isBadVersion(mid)!=isBadVersion(mid-1):
+                return mid
+            elif isBadVersion(mid):
                 end = mid-1
             else:
                 start = mid+1
