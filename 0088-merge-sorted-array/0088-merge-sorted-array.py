@@ -6,4 +6,7 @@ class Solution(object):
             nums1 = nums1[:m]
         else:
             nums1[m:m+n] = nums2[:n]
-            nums1.sort()
+            for i in range(len(nums1)-1):
+                for j in range(i+1, len(nums1)):
+                    if nums1[i]>nums1[j]:
+                        nums1[i], nums1[j] = nums1[j], nums1[i]
