@@ -1,12 +1,13 @@
 class Solution(object):
     def findPermutationDifference(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: int
-        """
+        sdict = dict()
+        tdict = dict()
         diff = 0
         for i in range(len(s)):
-            j = t.index(s[i])
-            diff += abs(i-j)
+            sdict[s[i]] = i
+            tdict[t[i]] = i
+        
+        for k in sdict.keys():
+            diff += abs(sdict[k]-tdict[k])
+        
         return diff
