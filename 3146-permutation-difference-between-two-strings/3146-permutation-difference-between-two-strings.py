@@ -5,6 +5,8 @@ class Solution(object):
         :type t: str
         :rtype: int
         """
-        s = "abc"
-        print(s.index("c"))
-        return 0
+        diff = 0
+        for i in range(len(s)):
+            j = t.index(s[i])
+            diff += abs(i-j)
+        return diff
