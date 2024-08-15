@@ -1,11 +1,5 @@
 class Solution(object):
     def lemonadeChange(self, bills):
-        if len(bills)==1:
-            if bills[0]==5:
-                return True
-            else:
-                return False
-
         now = {5:0, 10:0, 20:0}
         for a in bills:
             if a==5:
