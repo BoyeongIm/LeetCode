@@ -17,10 +17,13 @@ class Solution(object):
                 else:
                     return False
             else:
-                if now[5]>=3 or (now[5]>0 and now[10]>0):
+                if now[5]>0 and now[10]>0:
                     now[a]+=1
                     now[5]-=1
                     now[10]-=1
+                elif now[5]>=3:
+                    now[a]+=1
+                    now[5]-=3
                 else:
                     return False
         
