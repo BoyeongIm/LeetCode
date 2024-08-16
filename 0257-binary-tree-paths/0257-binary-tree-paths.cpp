@@ -20,7 +20,6 @@ public:
     vector<string> binaryTreePaths(TreeNode* root) {
         if (!root) return {};
         vector<string> paths;
-        paths = dfs(root, paths, to_string(root->val));
-        return paths;
+        return dfs(root, paths, to_string(root->val));
     }
 };
