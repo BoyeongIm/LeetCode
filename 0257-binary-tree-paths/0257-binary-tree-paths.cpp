@@ -5,7 +5,6 @@ public:
             if (find(paths.begin(), paths.end(), path) == paths.end()) {
                 paths.push_back(path);
             }
-            return paths;
         }
 
         if (currNode->left) dfs(currNode->left, paths, path+"->"+to_string(currNode->left->val));
