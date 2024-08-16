@@ -8,12 +8,8 @@ public:
             return paths;
         }
 
-        if (currNode->left) {
-            paths = dfs(currNode->left, paths, path+"->"+to_string(currNode->left->val));
-        }
-        if (currNode->right) {
-            paths = dfs(currNode->right, paths, path+"->"+to_string(currNode->right->val));
-        }
+        if (currNode->left) dfs(currNode->left, paths, path+"->"+to_string(currNode->left->val));
+        if (currNode->right) dfs(currNode->right, paths, path+"->"+to_string(currNode->right->val));
 
         return paths;
     }
