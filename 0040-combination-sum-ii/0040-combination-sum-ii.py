@@ -10,11 +10,13 @@ class Solution(object):
         return combinations
     
     def __help(self, candidates, combinations, comb, target):
-        if target==0 and comb not in combinations:
+        if target==0:
             combinations.append(comb)
             return
         
         for i in range(len(candidates)):
             if target-candidates[i]<0:
+                continue
+            if i>0 and candidates[i]==candidates[i-1]:
                 continue
             self.__help(candidates[i+1:], combinations, comb+[candidates[i]], target-candidates[i])     
