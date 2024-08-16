@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<string> dfs(TreeNode*& currNode, vector<string> paths, string path) {
+    vector<string> dfs(TreeNode*& currNode, vector<string>& paths, string path) {
         if (!currNode->left && !currNode->right) {
             if (find(paths.begin(), paths.end(), path) == paths.end()) {
                 paths.push_back(path);
