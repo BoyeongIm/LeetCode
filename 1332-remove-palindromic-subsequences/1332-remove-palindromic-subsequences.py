@@ -7,4 +7,4 @@ class Solution(object):
         if s[:-1]==s[-2::-1]:
             return 2
         else:
-            return 1
+            return 2
