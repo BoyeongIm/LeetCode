@@ -28,7 +28,7 @@ public:
         }
 
         if (list1) tmp->next = list1;
-        if (list2) tmp->next = list2;
+        else tmp->next = list2;
 
         return newHead;
     }
