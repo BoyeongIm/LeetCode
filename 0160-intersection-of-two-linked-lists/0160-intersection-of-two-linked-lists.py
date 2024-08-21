@@ -1,9 +1,8 @@
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
-        curr1 = headA
-        curr2 = headB
-        alength = 0
-        blength = 0
+        curr1, curr2 = headA, headB
+        alength, blength = 0, 0
+
         while curr1:
             alength+=1
             curr1 = curr1.next
@@ -14,21 +13,14 @@ class Solution(object):
         currA = headA
         currB = headB
         if alength > blength:
-            n = alength-blength
-            for i in range(n):
+            for i in range(alength-blength):
                 currA = currA.next
-            while currA!=currB and (currA.next and currB.next):
-                currA = currA.next
-                currB = currB.next
         else:
-            n = blength-alength
-            for i in range(n):
+            for i in range(blength-alength):
                 currB = currB.next
-            while currA!=currB and (currA.next and currB.next):
-                currA = currA.next
-                currB = currB.next
-        
-        if currA==currB:
-            return currA
-        else:
-            return None
+
+        while currA!=currB:
+            currA = currA.next
+            currB = currB.next
+            
+        return currA
