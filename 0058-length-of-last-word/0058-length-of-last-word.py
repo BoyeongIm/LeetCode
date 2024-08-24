@@ -3,15 +3,14 @@ class Solution(object):
         if len(s) == 1:
             return 1
 
-        reversed = s[::-1]
-        idx = 0
+        idx = len(s)-1
         length = 0
 
-        while reversed[idx] == " ":
-            idx += 1
+        while s[idx] == " ":
+            idx -= 1
             
-        for i in range(idx, len(s)):
-            if reversed[i] == " ":
+        for i in range(idx, -1, -1):
+            if s[i] == " ":
                 break
             length += 1
 
