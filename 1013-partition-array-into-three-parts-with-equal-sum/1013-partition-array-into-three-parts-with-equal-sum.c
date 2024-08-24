@@ -8,7 +8,7 @@ bool canThreePartsEqualSum(int* arr, int arrSize) {
     int part = 0;
     for (int i=0; i<arrSize; i++) {
         part += arr[i];
-        if (part == totalSum/3) {
+        if (part == totalSum/3 && count<3) {
             part = 0;
             count += 1;
         }
