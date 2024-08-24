@@ -1,5 +1,7 @@
 class Solution(object):
     def canThreePartsEqualSum(self, arr):
+        if sum(arr)%3 > 0:
+            return False
         eachsum = sum(arr)/3
         s = 0
         idx = 0 
