@@ -6,9 +6,11 @@ class Solution(object):
         reversed = s[::-1]
         idx = 0
         length = 0
+
         while reversed[idx] == " ":
             idx += 1
-        for i in range(idx, len(reversed)):
+            
+        for i in range(idx, len(s)):
             if reversed[i] == " ":
                 break
             length += 1
