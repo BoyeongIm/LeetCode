@@ -18,15 +18,6 @@ public:
 
         ListNode* curr = head;
         ListNode* prev = nullptr;
-
-        if (n==1) {
-            while (curr->next) {
-                prev = curr;
-                curr = curr->next;
-            } prev->next = nullptr;
-            delete curr;
-            return head;
-        } 
         
         int size = 1;
         while (curr->next) {
