@@ -16,12 +16,6 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        if len(matrix) == 1:
-            if target in matrix[0]:
-                return True
-            else:
-                return False
-        
         idx = 0
         while idx < len(matrix):
             result = self.binarySearch(matrix[idx], 0, len(matrix[idx])-1, target)
