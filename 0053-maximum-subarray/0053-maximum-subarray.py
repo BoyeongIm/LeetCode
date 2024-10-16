@@ -11,7 +11,7 @@ class Solution(object):
         m = -10001
         for i in range(len(nums)):
             s += nums[i]
-            if s >= m:
+            if s > m:
                 m = s
             if s < 0:
                 s = 0
