@@ -11,16 +11,21 @@
  */
 class Solution {
 public:
-    void DFTinorder(TreeNode* curr, vector<int>& BST) {        
+    void DFTinorder(TreeNode* curr, vector<int>& BST) {
         if (!curr) return;
-        DFTinorder(curr->left, BST);
+        if (curr->left) {
+            DFTinorder(curr->left, BST);
+        } 
         BST.push_back(curr->val);
-        DFTinorder(curr->right, BST);
+        if (curr->right) {
+            DFTinorder(curr->right, BST);
+        }
     }
 
     int kthSmallest(TreeNode* root, int k) {
         vector<int> to_vec;
         DFTinorder(root, to_vec);
+
         return to_vec[k-1];
     }
 };
