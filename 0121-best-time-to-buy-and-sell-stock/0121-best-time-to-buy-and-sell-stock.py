@@ -1,18 +1,11 @@
 class Solution(object):
     def maxProfit(self, prices):
-        min_price = 10001
-        max_price = -1
         max_profit = 0
-
-        i,j = 0, len(prices)-1
-        while i <= j:        
-            if prices[i] < min_price:
-                min_price = prices[i]
-            if prices[j] > max_price:
-                max_price = prices[j]
-            if max_profit < max_price-min_price:
-                max_profit = max_price-min_price
-            i += 1 
-            j -= 1
+        min_price = prices[0]
+        for p in prices[1:]:
+            if p-min_price > max_profit:
+                max_profit = p - min_price
+            if p < min_price:
+                min_price = p
 
         return max_profit
