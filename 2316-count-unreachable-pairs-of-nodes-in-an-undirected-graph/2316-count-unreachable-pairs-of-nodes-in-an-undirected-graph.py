@@ -10,6 +10,7 @@ class Solution(object):
                 self.unite(u, v, parents)
         count = {i:0 for i in range(n)}
         for i in range(n):
+            parents[i] = self.findparent(i, parents)
             count[parents[i]] +=1
         print(parents)
         print(count)
