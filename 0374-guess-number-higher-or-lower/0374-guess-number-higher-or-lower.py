@@ -8,7 +8,7 @@
 class Solution(object):
     def guessNumber(self, n):
         start, end = 1, n
-        mid = (start+end)/2
+        mid = (start+end)//2
         result = guess(mid)
         while result != 0:
             if result == -1:
@@ -17,6 +17,5 @@ class Solution(object):
                 start = mid + 1
             mid = (start+end)/2
             result = guess(mid)
-        
-        return start
+        return mid
             
