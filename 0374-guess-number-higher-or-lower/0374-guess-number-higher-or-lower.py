@@ -8,14 +8,14 @@
 class Solution(object):
     def guessNumber(self, n):
         start, end = 1, n
-        mid = (start+end)//2
+        mid = start + (end-start)//2
         result = guess(mid)
         while result != 0:
             if result == -1:
                 end = mid - 1
             elif result == 1:
                 start = mid + 1
-            mid = (start+end)/2
+            mid = start + (end-start)//2
             result = guess(mid)
         return mid
             
