@@ -10,7 +10,7 @@ class ExamRoom(object):
 
         seat = 0
         self.seated.sort()
-        max_distance = -1
+        max_distance = self.seated[0]
         
         for i in range(len(self.seated)-1):
             currdist = (self.seated[i+1]-self.seated[i])//2
@@ -25,8 +25,7 @@ class ExamRoom(object):
         return seat
 
     def leave(self, p):
-        if p in self.seated:
-            self.seated.remove(p)
+        self.seated.remove(p)
 
 # Your ExamRoom object will be instantiated and called as such:
 # obj = ExamRoom(n)
