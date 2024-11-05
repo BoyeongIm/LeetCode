@@ -5,37 +5,39 @@ using namespace std;
 class ExamRoom {
 public:
     int size;
-    vector<int> seated;
+    set<int> seated;
     ExamRoom(int n) : size(n) {    }
     
     int seat() {
-        if (seated.size()==0) {
-            seated.push_back(0);
+        if (seated.empty()) {
+            seated.insert(0);
             return 0;
         }
 
         int seat = 0;
-        sort(seated.begin(), seated.end());
-        int max_distance = seated[0];
+        int max_distance = *seated.begin();
 
-        for (int i=0; i<seated.size()-1; i++) {
-            int currdist = (seated[i+1]-seated[i])/2;
+        auto prev = seated.begin();
+        for (auto it=seated.begin(); it!=seated.end(); it++) {
+            int currdist = (*it-*prev)/2;
             if (currdist > max_distance) {
                 max_distance = currdist;
-                seat = seated[i] + currdist;
+                seat = *prev + currdist;
             }
+            prev = it;
         }
 
-        if (max_distance < (size-1)-seated.back()) {
+        if (max_distance < (size-1)-*prev) {
             seat = size-1;
         }
 
-        seated.push_back(seat);
+        seated.insert(seat);
+        // sort(seated.begin(), seated.end());
         return seat;
     }
     
     void leave(int p) {
-        seated.erase(remove(seated.begin(), seated.end(), p), seated.end());
+        seated.erase(p);
     }
 };
 
