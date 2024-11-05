@@ -18,7 +18,7 @@ class ExamRoom(object):
                 max_distance = currdist
                 seat = self.seated[i] + currdist
 
-        if max_distance < self.size-1 - self.seated[-1]:
+        if max_distance < (self.size-1) - self.seated[-1]:
             seat = self.size-1
 
         self.seated.append(seat)
