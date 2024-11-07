@@ -1,50 +1,103 @@
-#include <list>
+struct Node {
+    Node* prev;
+    int val;
+    Node* next;
+};
+
 class MyCircularDeque {
-public: 
+private:
     int maxsize;
-    list<int> q;
-    MyCircularDeque(int k) : maxsize(k) {    }
+    int currsize;
+    Node* front;
+    Node* rear;
+public: 
+    MyCircularDeque(int k) : maxsize(k), currsize(0) {  
+        front = NULL;
+        rear = NULL;
+    }
     
     bool insertFront(int value) {
         if (isFull()) return false;
-        q.push_front(value);
+        Node* newNode = new Node;
+        newNode->val = value;
+        if (!front && !rear) {
+            front = newNode;
+            rear = newNode;
+        }
+        else {
+            front->prev = newNode;
+            newNode->next = front;
+            front = newNode;
+        }
+        currsize ++;
         return true;
     }
     
     bool insertLast(int value) {
         if (isFull()) return false;
-        q.push_back(value);
+        Node* newNode = new Node;
+        newNode->val = value;
+        if (!front && !rear) {
+            front = newNode;
+            rear = newNode;
+        }
+        else {
+            newNode->prev = rear;
+            rear->next = newNode;
+            rear = newNode;
+        }
+        currsize ++;
         return true;
     }
     
     bool deleteFront() {
         if (isEmpty()) return false;
-        q.pop_front();
+        if (front==rear) {
+            front=nullptr;
+            rear=nullptr;
+        }
+        else {
+            Node* to_delete = front;
+            front = front->next;
+            to_delete = nullptr;
+            delete to_delete;
+        }
+        currsize --;
         return true;
     }
     
     bool deleteLast() {
         if (isEmpty()) return false;
-        q.pop_back();
+        if (front==rear) {
+            front=nullptr;
+            rear=nullptr;
+        }
+        else {
+            Node* to_delete = rear;
+            rear = rear->prev;
+            to_delete = nullptr;
+            delete to_delete;
+        }
+        currsize --;
         return true;
     }
     
     int getFront() {
         if (isEmpty()) return -1;
-        return q.front();
+        return front->val;
     }
     
     int getRear() {
         if (isEmpty()) return -1;
-        return q.back();
+        return rear->val;
     }
     
     bool isEmpty() {
-        return q.empty();
+        return currsize==0;
     }
     
     bool isFull() {
-        return q.size()==maxsize;
+        return currsize==maxsize;
     }
 };
 
