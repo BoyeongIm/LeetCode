@@ -7,13 +7,13 @@ class Solution(object):
                 break
             elif nums[start] <= nums[mid] and nums[mid] > nums[end]:
                 start = mid+1
+            elif nums[start] < nums[mid] and nums[mid] >= nums[end]:
+                start = mid+1
             elif nums[start] >= nums[mid] and nums[mid] < nums[end]:
                 end = mid
-            elif nums[start] < nums[mid] and nums[mid] >= nums[end]:
-                start = mid
             elif nums[start] > nums[mid] and nums[mid] <= nums[end]:
                 end = mid
             elif nums[start] == nums[mid] and nums[mid] == nums[end]:
-                start = start+1
-                end = end-1
+                start += 1
+                end -= 1
         return nums[start]
