@@ -16,6 +16,4 @@ class Solution(object):
             elif nums[start] == nums[mid] and nums[mid] == nums[end]:
                 start = start+1
                 end = end-1
-            else:
-                break
         return nums[start]
