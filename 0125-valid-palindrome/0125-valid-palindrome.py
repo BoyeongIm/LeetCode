@@ -6,4 +6,6 @@ class Solution(object):
             if  w >= 'a' and w <= 'z':
                 combined += w
             elif w >= '0' and w <= '9':
+                combined += w
+                
         return combined == combined[::-1]
