@@ -1,34 +1,32 @@
 class Solution(object):
     def minCostConnectPoints(self, points):
-        def make_edges(points):
-            edges = []
-            for i in range(len(points)):
-                for j in range(i + 1, len(points)):
-                    x1, y1 = points[i]
-                    x2, y2 = points[j]
-                    w = abs(x1 - x2) + abs(y1 - y2)
-                    edges.append((w, i, j))  # (weight, point1, point2)
-            return edges
-
+        def calculate_cost(point1, point2):
+            return abs(point1[0] - point2[0]) + abs(point1[1] - point2[1])
+        
         n = len(points)
-        edges = make_edges(points)
         total_weight = 0
-        visited = set()
-
-        queue = [(0,0)]
-        while queue and len(visited)<n:
-            queue.sort(key = lambda x: x[0])
-            cost, u = queue.pop(0)
-
-            if u in visited:
-                continue
-            visited.add(u)
-            total_weight+=cost
-            for w, i, j in edges:
-                if i==u and j not in visited:
-                    queue.append((w, j))
-                elif j==u and i not in visited:
-                    queue.append((w, i))
+        visited = [False] * n
+        dist = [float('inf')] * n
+        dist[0] = 0  # Start from the first point
+        
+        for _ in range(n):
+            # Find the unvisited node with the smallest distance
+            min_cost = float('inf')
+            u = -1
+            for i in range(n):
+                if not visited[i] and dist[i] < min_cost:
+                    min_cost = dist[i]
+                    u = i
+            
+            # Mark this node as visited and add the cost to the total weight
+            visited[u] = True
+            total_weight += min_cost
+            
+            # Update distances to the unvisited neighbors
+            for v in range(n):
+                if not visited[v]:
+                    cost = calculate_cost(points[u], points[v])
+                    if cost < dist[v]:
+                        dist[v] = cost
         
         return total_weight
-            
