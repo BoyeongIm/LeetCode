@@ -21,7 +21,7 @@ string frequencySort(string s) {
 
     string answer = "";
     for (auto p : freq2) {
-        for (int j=0; j<p.second; j++) answer += p.first;
+        answer.append(p.second, p.first);
     }
 
     return answer;
