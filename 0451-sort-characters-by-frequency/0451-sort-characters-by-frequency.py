@@ -1,19 +1,16 @@
 class Solution(object):
     def frequencySort(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        freq_dict = {}
-        for i in range(len(s)):
-            if s[i] not in freq_dict:
-                freq_dict[s[i]] = 1
-            else: 
-                freq_dict[s[i]] += 1
-        sorted_dict = sorted(freq_dict.items(), key=lambda x:x[1], reverse=True)
-        print(sorted_dict)
-        s2 = ""
-        for j in sorted_dict:
-            s2 += j[0]*j[1]
+        answer = ""
+        sdict = dict()
+        for c in s:
+            if c not in sdict:
+                sdict[c] = 1
+            else:
+                sdict[c] += 1
+        sorted_sdict = sorted(sdict.items(), key=lambda x:x[1], reverse=True)
+        for k, v in sorted_sdict:
+            while v > 0:
+                answer += k
+                v -= 1
 
-        return s2
+        return answer
