@@ -24,6 +24,8 @@ public:
             answer += n;
         }
 
+        if (answer[0] == '0') return "0";
+
         return answer;
     }
 };
