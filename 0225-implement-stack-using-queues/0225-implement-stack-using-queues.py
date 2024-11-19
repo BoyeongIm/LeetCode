@@ -4,39 +4,19 @@ class MyStack(object):
         self.queue2 = []
 
     def push(self, x):
-        if self.queue1:
-            self.queue1.append(x)
-        else:
-            self.queue2.append(x)
-
+        self.queue2.append(x)
+        for i in range(len(self.queue1)-1):
+            self.queue2.append(self.queue1.pop(0))
+        self.queue1 = self.queue2
+       
     def pop(self):
-        if self.queue1:
-            while self.queue1:
-                x = self.queue1.pop(0)
-                if len(self.queue1) == 0:
-                    break
-                self.queue2.append(x)
-        else:
-            while self.queue2:
-                x = self.queue2.pop(0)
-                if len(self.queue2) == 0:
-                    break
-                self.queue1.append(x)
-        return x
+        return self.queue1.pop(0)
 
     def top(self):
-        if self.queue1:
-            while self.queue1:
-                x = self.queue1.pop(0)
-                self.queue2.append(x)
-        else:
-            while self.queue2:
-                x = self.queue2.pop(0)
-                self.queue1.append(x)
-        return x
+        return self.queue1[0]
 
     def empty(self):
-        return not self.queue1 and not self.queue2
+        return len(self.queue1)==0
 
 
 # Your MyStack object will be instantiated and called as such:
