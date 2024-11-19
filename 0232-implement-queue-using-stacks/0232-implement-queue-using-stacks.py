@@ -9,7 +9,8 @@ class MyQueue(object):
         self.instack.append(x)
 
     def pop(self):
-        return self.peek()
+        self.peek()
+        return self.outstack.pop()
 
     def peek(self):
         if not self.outstack:
