@@ -16,6 +16,6 @@ class Solution(object):
             else:
                 while v in unique_freq and v>0:
                     v -= 1
-                sorted_freq[k] = v
+                # sorted_freq[k] = v
                 unique_freq.add(v)
         return len(s) - sum(unique_freq)
