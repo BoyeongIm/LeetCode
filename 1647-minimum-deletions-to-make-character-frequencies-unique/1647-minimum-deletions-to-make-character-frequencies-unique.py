@@ -14,8 +14,8 @@ class Solution(object):
             if v not in unique_freq:
                 unique_freq.add(v)
             else:
-                while v in sorted_freq.values() and v in unique_freq:
-                    v -= 1
-                sorted_freq[k] = v
+                v-=1
                 unique_freq.add(v)
         return len(s) - sum(unique_freq)
+        
+        
