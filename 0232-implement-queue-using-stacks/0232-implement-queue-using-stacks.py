@@ -19,10 +19,7 @@ class MyQueue(object):
         return self.outstack[-1]
 
     def empty(self):
-        if not self.instack and not self.outstack:
-            return True
-        else:
-            return False
+        return not self.instack and not self.outstack
         
 
 
