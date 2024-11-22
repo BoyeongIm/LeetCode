@@ -9,7 +9,7 @@ public:
         priority_queue<pair<int,int>, vector<pair<int, int>>, greater<pair<int, int>>> prQ;
         prQ.push(make_pair(0, k));
         dist[k] = 0;
-        int min_w = INT_MAX;
+        int max_w = INT_MIN;
 
         while (!prQ.empty()) {
             int total_weight = prQ.top().first;
@@ -24,8 +24,10 @@ public:
                     prQ.push(make_pair(dist[v],v));
                 }
             }
-            min_w = total_weight;
         }
-        return min_w>0 ? min_w : -1;
-    }
+        for (int i=1; i<=n; i++) {
+            if ((i!=k) && dist[i] > max_w) max_w = dist[i];
+        }
+        return max_w==10000 ? -1 : max_w;
+    }   
 };
