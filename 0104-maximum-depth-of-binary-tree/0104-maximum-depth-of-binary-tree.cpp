@@ -13,7 +13,6 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) {
         if (!root) return 0;
-        if (!root->left && !root->right) return 1;
         
         int depth = 0;
         queue<TreeNode*> nodeQ;
