@@ -4,8 +4,10 @@ class Solution:
         frequency = []
         for i in range(len(mat)):
             frequency.append((sum(mat[i]), i))
-        frequency.sort(key=lambda x:(x[0],x[1]))
-        answer = []
-        for f in frequency:
-            answer.append(f[1])
-        return answer[:k]
+        heapq.heapify(frequency)
+        return [heapq.heappop(frequency)[1] for _ in range(k)]
+        # frequency.sort(key=lambda x:(x[0],x[1]))
+        # answer = []
+        # for f in frequency:
+        #     answer.append(f[1])
+        # return answer[:k]
