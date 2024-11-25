@@ -8,4 +8,4 @@ class Solution:
         answer = []
         for f in frequency:
             answer.append(f[1])
-        return answer
+        return answer[:k]
