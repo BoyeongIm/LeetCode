@@ -9,7 +9,7 @@ class Solution:
             count[dep] += people
             count[arr] -= people
         now = 0
-        for i in range(1, len(count)):
+        for i in range(len(count)):
             now += count[i]
             if now > capacity:
                 return False
