@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* removeNodes(ListNode* head) {
-        if (!head->next) return head;
+        if (!head) return nullptr;
 
         ListNode* curr = head;
         vector<ListNode*> nodestack;
@@ -21,14 +21,24 @@ public:
             curr = curr->next;
         }
 
-        ListNode* maxnode = nodestack.back();
-        for (int i=nodestack.size()-2; i>=0; i--) {
-            if (maxnode->val <= nodestack[i]->val) {
-                nodestack[i]->next = maxnode;
-                maxnode = nodestack[i];
+        for (int i=nodestack.size()-1; i>=0; i--) {
+            if (i==0) {
+                if (nodestack[i]->val < nodestack[i]->next->val) {
+                    head = nodestack[i]->next;
+                }
             }
-            else if (maxnode->val > nodestack[i]->val){
-                head = maxnode;
+
+            else if (i==1) {
+                if (nodestack[i]->val < nodestack[i]->next->val) {
+                    nodestack[i-1]->next = nodestack[i+1];
+                }
+            }
+            else {
+                ListNode* curr = nodestack[i];
+                ListNode* prev = nodestack[i-1];
+                if (curr->val > prev->val) {
+                    nodestack[i-2]->next = curr;
+                }
             }
         }
 
