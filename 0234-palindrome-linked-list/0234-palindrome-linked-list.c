@@ -5,42 +5,33 @@
  *     struct ListNode *next;
  * };
  */
+struct ListNode* reverseList(struct ListNode* head) {
+    if (head==NULL || head->next==NULL) return head;
+
+    struct ListNode* prev = NULL;
+    struct ListNode* curr = head;
+    while (curr) {
+        struct ListNode* temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+
+    return prev;
+}
+
 bool isPalindrome(struct ListNode* head) {
-    struct ListNode* node = head;
-    int size = 0;
-    while (node) {
-        size++;
-        node = node->next;
+    if (head->next == NULL) return true;
+
+    struct ListNode* reversed_head = reverseList(head);
+
+    while (head && reversed_head) {
+        if (head->val != reversed_head->val) {
+            return false;
+        }
+        head = head->next;
+        reversed_head = reversed_head->next;
     }
 
-    if (size==1) return true;
-
-    struct ListNode* temp = head;
-    if (size%2 == 0) {
-        int mid = size/2;
-        int arr[size];
-        for (int i=0; i<mid; i++) {
-            arr[i] = temp->val;
-            temp = temp->next;
-        }
-        for (int j=mid-1; j>=0; j--) {
-            if (arr[j] != temp->val) return false;
-            temp = temp->next;
-        }
-    }
-
-    else if (size%2 == 1) {
-        int mid = size/2;
-        int arr[size];
-        for (int i=0; i<mid; i++) {
-            arr[i] = temp->val;
-            temp = temp->next;
-        }
-        temp = temp->next;
-        for (int j=mid-1; j>=0; j--) {
-            if (arr[j]!=temp->val) return false;
-            temp = temp->next;
-        }
-    }
     return true;
 }
