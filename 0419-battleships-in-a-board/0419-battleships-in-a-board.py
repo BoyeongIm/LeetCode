@@ -3,13 +3,11 @@ class Solution:
         if not board:
             return 0
 
-        # 행과 열의 길이
         row = len(board)
         col = len(board[0])
-        visited = [[False for _ in range(col)]] * row
-
+        visited = [[False] * col for _ in range(row)]
+        
         def dfs(x, y):
-            # 행렬 범위를 벗어나거나 물(0)을 만나면 종료
             if x < 0 or x >= row or y < 0 or y >= col or board[x][y] == '.' or visited[x][y] == True:
                 return
 
