@@ -9,42 +9,39 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* nodesBetweenCriticalPoints(struct ListNode* head, int* returnSize) {
-    struct ListNode* prev = head;
-    struct ListNode* curr = head->next;
-    struct ListNode* nextt = head->next->next;
-    int *ans = (int*) malloc(2*sizeof(int));
     *returnSize = 2;
-    int criticalCount = 0;
+    int* answer = (int*)malloc((*returnSize) * sizeof(int));
+    int criticalPoints = 0;
+    answer[0] = INT_MAX;
+    answer[1] = INT_MIN;
     int first_cp = -1;
-    int prev_cp = -1;
-    int idx= 1;
-    ans[0] = INT_MAX;
-    ans[1] = INT_MIN;
-    while (nextt) {
-        if (((prev->val < curr->val) && (curr->val > nextt->val)) || 
-            ((prev->val > curr->val) && (curr->val < nextt->val))) 
-        {
-            criticalCount++;
-            if (first_cp==-1) first_cp = idx;
-            else {
-                if (idx - prev_cp < ans[0]) {
-                    ans[0] = idx - prev_cp;
-                }
-                if (idx - first_cp > ans[1]) {
-                    ans[1] = idx - first_cp;
-                }
+    int prev_cp = 0;
+    int pos = 2;
+
+    struct ListNode* prv = head;
+    struct ListNode* curr = head->next;
+    struct ListNode* nxt = head->next->next;
+    while (nxt) {
+        if ((prv->val < curr->val && curr->val > nxt->val) || (prv->val > curr->val && curr->val < nxt->val)) {
+            criticalPoints++;
+            if (first_cp < 0) {
+                first_cp = pos;
             }
-            prev_cp = idx;
+            else {
+                if (pos-first_cp > answer[1]) answer[1] = pos - first_cp;
+                if (pos-prev_cp < answer[0]) answer[0] = pos - prev_cp;
+            }
+            prev_cp = pos;
         }
-            prev = curr;
-            curr = nextt;
-            nextt = nextt->next;
-            idx ++;
+        prv = curr;
+        curr = nxt;
+        nxt = nxt->next;
+        pos++;
+    }
+    if (criticalPoints < 2) {
+        answer[0] = -1;
+        answer[1] = -1;
     }
 
-    if (criticalCount < 2) {
-        ans[0] = -1;
-        ans[1] = -1;
-    }
-    return ans;
+    return answer;
 }
