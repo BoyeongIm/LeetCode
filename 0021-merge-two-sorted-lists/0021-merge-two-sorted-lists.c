@@ -7,32 +7,32 @@
  */
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
     if (!list1) return list2;
-    else if (!list2) return list1;
-    if (!list1) return list2;
-    else if (!list2) return list1;
-    
-    struct ListNode* linking = list1;
-    while (linking->next) {
-        linking = linking->next;
-    } linking->next = list2;
-    
-    struct ListNode* curr = list1;
-    struct ListNode* temp = NULL;
+    if (!list2) return list1;
 
-    while (curr) {
-        temp = curr->next;
-        
-        while (temp) 
-            {
-                if (curr->val > temp->val) {  // to decreasing order
-                    int curr_val = curr->val; 
-                    curr->val = temp->val;   
-                    temp->val = curr_val;     
-            }
-            temp = temp->next;
+    struct ListNode* newHead = NULL;
+    if (list1->val < list2->val) {
+        newHead = list1;
+        list1 = list1->next;
+    } else {
+        newHead = list2;
+        list2 = list2->next;
+    }
+
+    struct ListNode* curr = newHead;
+    while (list1 && list2) {
+        if (list1->val < list2->val) {
+            curr->next = list1;
+            list1 = list1->next;
+        }
+        else {
+            curr->next = list2;
+            list2 = list2->next;
         }
         curr = curr->next;
     }
-    
-    return list1;
+
+    if (list1) curr->next = list1;
+    else curr->next = list2;
+
+    return newHead;
 }
