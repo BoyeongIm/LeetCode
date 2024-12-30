@@ -10,10 +10,20 @@ class Solution:
             return 0
         if not root.left and not root.right:
             return 1
-        if not root.left and root.right:
-            return 1+self.minDepth(root.right)
-        if not root.right and root.left:
-            return 1+self.minDepth(root.left)
-        if root.right and root.left:
-            return min(1+self.minDepth(root.left), 1+self.minDepth(root.right))  
-        return minDepth(root)
+        depth = 0
+        q = deque([root])
+        while q:
+            n = len(q) 
+            depth += 1
+            for i in range(n):
+                currNode = q.popleft()
+                if currNode.left and currNode.right:
+                    q.append(currNode.left)
+                    q.append(currNode.right)
+                elif currNode.right:
+                    q.append(currNode.right)
+                elif currNode.left:
+                    q.append(currNode.left)
+                else:
+                    return depth
+        return depth
