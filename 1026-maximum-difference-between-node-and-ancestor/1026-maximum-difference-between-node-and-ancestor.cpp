@@ -11,15 +11,21 @@
  */
 class Solution {
 public:
-    int maxAncestorDiff(TreeNode* root, int maxV=INT_MIN, int minV=INT_MAX) {
-        if (!root) return maxV-minV;
+    int dfs(TreeNode* currNode, int maxval, int minval) {
+        if (currNode == nullptr) return maxval-minval;
+        maxval = max(currNode->val, maxval);
+        minval = min(currNode->val, minval);
 
-        maxV = max(maxV, root->val);
-        minV = min(minV, root->val);
+        int left_diff = dfs(currNode->left, maxval, minval);
+        int right_diff = dfs(currNode->right, maxval, minval);
 
-        int ans1 = maxAncestorDiff(root->left, maxV, minV);
-        int ans2 = maxAncestorDiff(root->right, maxV, minV);
+        return left_diff > right_diff ? left_diff : right_diff;
+    }
 
-        return max(ans1, ans2);
+    int maxAncestorDiff(TreeNode* root) {
+        int l = dfs(root->left, root->val, root->val);
+        int r = dfs(root->right, root->val, root->val);
+
+        return l > r ? l : r;
     }
 };
