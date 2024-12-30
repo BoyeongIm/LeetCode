@@ -1,21 +1,27 @@
 # Definition for a binary tree node.
-# class TreeNode:
+# class TreeNode(object):
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
-        def dfs(currNode, maxi, mini):
+class Solution(object):
+    def maxAncestorDiff(self, root):
+        """
+        :type root: Optional[TreeNode]
+        :rtype: int
+        """
+        def dfs(currNode, max_val, min_val):
             if not currNode:
-                return maxi-mini
-            maxi = max(currNode.val, maxi)
-            mini = min(currNode.val, mini)
-            left_diff = dfs(currNode.left, maxi, mini)
-            right_diff = dfs(currNode.right, maxi, mini)
-            return left_diff if left_diff>right_diff else right_diff
+                return max_val - min_val
+            if currNode.val > max_val:
+                max_val = currNode.val
+            if currNode.val < min_val:
+                min_val = currNode.val
+            left = dfs(currNode.left, max_val, min_val)
+            right = dfs(currNode.right, max_val, min_val)
+            return left if left > right else right
+        
+        left_result = dfs(root.left, root.val, root.val)
+        right_result = dfs(root.right, root.val, root.val)
 
-        l = dfs(root.left, root.val, root.val)
-        r = dfs(root.right, root.val, root.val)
-
-        return l if l>r else r
+        return left_result if left_result > right_result else right_result
