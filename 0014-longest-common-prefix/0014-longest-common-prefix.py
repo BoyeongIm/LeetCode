@@ -21,7 +21,7 @@ class Solution(object):
                 minlength_w = s
         while len(minlength_w)>0:
             for s in strs:
-                if minlength_w not in s:
+                if s[:len(minlength_w)] != minlength_w:
                     break
                 count +=1        
             if count == len(strs):
