@@ -1,15 +1,8 @@
-class Solution(object):
-    def strStr(self, haystack, needle):
-        """
-        :type haystack: str
-        :type needle: str
-        :rtype: int
-        """
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
         if needle not in haystack:
             return -1
-        else:
-            hl = len(haystack)
-            nl = len(needle)
-            for i in range(hl-nl+1):
-                if haystack[i:i+nl] == needle:
-                    return i
+        l = len(needle)
+        for i in range(len(haystack)-l+1):
+            if haystack[i:i+l] == needle:
+                return i
