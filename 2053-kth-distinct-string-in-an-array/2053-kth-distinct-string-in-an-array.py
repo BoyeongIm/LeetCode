@@ -1,17 +1,9 @@
-class Solution(object):
-    def kthDistinct(self, arr, k):
-        arr_dict = dict()
-        for a in arr:
-            if a not in arr_dict:
-                arr_dict[a] = 1
-            else:
-                arr_dict[a] += 1
-
+class Solution:
+    def kthDistinct(self, arr: List[str], k: int) -> str:
         count = 0
-        for a in arr:
-            if arr_dict[a]==1:
-                count+=1
-            if count==k:
-                return a
-
+        for i in range(len(arr)):
+            if arr[i] not in arr[i+1:] and arr[i] not in arr[:i]:
+                count += 1
+            if count == k:
+                return arr[i]
         return ""
