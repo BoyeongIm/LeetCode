@@ -1,31 +1,21 @@
 class Solution {
 public:
-    static string repeatString(string& s, int n) {
-        string result = "";
-        for(int i=0; i<n; i++) {
-            result += s;
-        }
-        return result;
-    }
-
     static bool cmp(string& a, string& b) {
-        return repeatString(a, 10) > repeatString(b, 10);
+        return a+b > b+a;
     }
-
     string largestNumber(vector<int>& nums) {
-        vector<string> tostr;
-        for (int n : nums) {
-            tostr.push_back(to_string(n));
+        vector<string> numstring;
+        for (auto n : nums) {
+            numstring.push_back(to_string(n));
         }
 
-        sort(tostr.begin(), tostr.end(), cmp);
-        string answer = "";
-        for (string n : tostr) {
-            answer += n;
-        }
+        sort(numstring.begin(), numstring.end(), cmp);
+        string answer;
 
+        for (auto s : numstring) {
+            answer += s;
+        }
         if (answer[0] == '0') return "0";
-
         return answer;
     }
 };
