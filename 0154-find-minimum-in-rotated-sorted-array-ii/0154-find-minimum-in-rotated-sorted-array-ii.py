@@ -6,11 +6,9 @@ class Solution(object):
             if nums[start] == nums[mid] and nums[mid] == nums[end]:
                 start += 1
                 end -= 1
-            elif nums[start] <= nums[mid] and nums[mid] <= nums[end]:
-                break
-            elif nums[start] <= nums[mid] and nums[mid] >= nums[end]:
+            elif nums[mid] >= nums[end]:
                 start = mid+1
-            elif nums[start] >= nums[mid] and nums[mid] <= nums[end]:
+            elif nums[mid] <= nums[end]:
                 end = mid
             
         return nums[start]
